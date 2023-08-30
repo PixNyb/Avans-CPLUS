@@ -17,15 +17,15 @@ class Test
 public:
     Test()
     {
-        lijst = new Aap[10000000];
+        // lijst = new Aap[10000000];
         cout << teller++ << endl;
         Test *test = new Test();
+        int a, b, c, d, e, f, g, h, i, j;
     }
 
 private:
     static int teller;
-    Aap *lijst;
-    // int a,b,c,d,e,f,g,h,i,j;
+    static char *lijst;
 };
 
 int Test::teller = 0;

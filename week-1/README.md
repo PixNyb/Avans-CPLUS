@@ -93,3 +93,34 @@ Zie [hello](hello).
     | `Aap`       | 0xe49a3ea6000           | 15709445447680          |
 
     - Hieruit kan ik concluderen dat het `char` type de minste ruimte in beslag neemt, en het `Aap` type de meeste ruimte in beslag neemt.
+
+2. Leid uit je meetgegevens ook af hoe groot de heap ongeveer is.
+    - Door het gebruik van `info proc mappings` weet ik precies hoe groot de heap is, of deze resources beschikbaar zijn op mijn systeem is een ander verhaal. De gemiddelde heap is 4991025447424 bytes groot. Oftewel ~5TB.
+
+3. Verwijder nu de initialisatie van lijst en draai het programma weer. Verklaar de verschilen.
+    - Na het runnen van het bestand waarbij de initialisatie van `lijst` verwijderd is met GDB en het uitvoeren van `info proc mappings` krijg ik de volgende resultaten:
+
+    | Type        | Heapgrootte (bytes hex) | Heapgrootte (bytes dec) |
+    | ----------- | ----------------------- | ----------------------- |
+    | `char`      | 0x420000                | 4325376                 |
+    | `wchar_t`   | 0x420000                | 4325376                 |
+    | `int`       | 0x420000                | 4325376                 |
+    | `long`      | 0x420000                | 4325376                 |
+    | `long long` | 0x420000                | 4325376                 |
+    | `float`     | 0x420000                | 4325376                 |
+    | `double`    | 0x420000                | 4325376                 |
+    | `Aap`       | 0x420000                | 4325376                 |
+
+    - Doordat de initialisatie wegvalt hoeft er geen geheugen voor de lijst variable gereserveerd te worden. Hierdoor wordt de heap kleiner. Wel kan onder runtime hierdoor de heap groter worden.
+
+4. Haal de commentaartekens vóór `int a,b,c,d,e,f,g,h,i,j;` weg (en laat de lijst static). Verklaar de verschillen.
+
+    - Na het initialiseren van de array gaat de gemiddelde heapgrootte naar `0x630000`, dit houdt in dat er extra geheugen geregistreerd is om de array `int a,b,c,d,e,f,g,h,i,j;` op te slaan in geheugen.
+
+5. Verplaats de regel `int a,b,c,d,e,f,g,h,i,j;` tot in de constructor. Verklaar weer de verschillen.
+
+    - Na het verplaatsen van de regel `int a,b,c,d,e,f,g,h,i,j;` tot in de constructor gaat de heap size terug naar `0x420000`. Wat betekend dat er nu geen geheugen is gereserveerd voor de variabelen.
+
+6. Kun je de grootte van de stack nu bepalen? Leg uit.
+
+    - Ja, zoals hiervoor heb ik de grootte van de stack bepaald met de hulp van `info proc mappings`. Hierdoor heb ik een accurate heap size.
