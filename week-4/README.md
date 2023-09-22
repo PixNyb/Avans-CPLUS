@@ -44,10 +44,10 @@
         /home/pixnyb/Projects/Avans/CPLUS/week-4/4.cpp: In function ‘int main()’:
         /home/pixnyb/Projects/Avans/CPLUS/week-4/4.cpp:22:7: error: cannot bind rvalue reference of type ‘std::unique_ptr<Widget>&&’ to lvalue of type ‘std::unique_ptr<Widget>’
         22 |   fun(w);
-            |       ^
+           |       ^
         /home/pixnyb/Projects/Avans/CPLUS/week-4/4.cpp:18:36: note:   initializing argument 1 of ‘void fun(std::unique_ptr<Widget>&&)’
         18 | void fun(std::unique_ptr<Widget> &&p) { std::cout << p->message() << '\n'; }
-            |          ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+           |          ~~~~~~~~~~~~~~~~~~~~~~~~~~^
         ```
 
         De compiler geeft aan dat de `rvalue` reference niet gebonden kan worden aan de `lvalue` reference.
