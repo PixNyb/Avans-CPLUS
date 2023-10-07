@@ -1,11 +1,5 @@
 #include <iostream>
 
-int main()
-{
-    hi();
-}
+int main() { hi(); }
 
-void hi()
-{
-    std::cout << "Hello, world!\n";
-}
+void hi() { std::cout << "Hello, world!\n"; }

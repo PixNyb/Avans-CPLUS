@@ -2,7 +2,4 @@
 
 void hi();
 
-int main()
-{
-    hi();
-}
+int main() { hi(); }
